@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Premium Print Press</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">Premium Print Press</div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#products">All Products</a>
+      <a href="#contact">Contact</a>
+      <div class="nav-menu-actions" id="navMenuActions"></div>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="navToggle" aria-label="Menu">☰</button>
+      <button class="btn ghost" id="signInOpen">Sign In</button>
+      <button class="btn accent" id="signUpOpen">Sign Up</button>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Elevate Your Brand With Premium Printing</h1>
+      <p>Luxury finishes, vibrant colors, precision sizing, and fast ordering in one place.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn accent large">Explore Products</a>
+        <a href="#contact" class="btn ghost large">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+  </section>
+
+  <section id="products" class="section">
+    <div class="section-head">
+      <h2>All Products</h2>
+      <p>Choose a printing type and configure size to see pricing.</p>
+    </div>
+
+    <div class="type-scroller-wrap">
+      <button class="scroll-btn" id="scrollLeft" aria-label="Scroll left">‹</button>
+      <div class="type-scroller" id="typeScroller"></div>
+      <button class="scroll-btn" id="scrollRight" aria-label="Scroll right">›</button>
+    </div>
+
+    <div class="product-panel">
+      <div class="product-info">
+        <h3 id="productName"></h3>
+        <p id="productDesc"></p>
+        <div class="meta">
+          <div class="meta-item">
+            <span>Base price per sq.in</span>
+            <strong id="basePrice"></strong>
+          </div>
+        </div>
+      </div>
+      <div class="product-config">
+        <div class="field">
+          <label for="sizePreset">Size Preset</label>
+          <select id="sizePreset">
+            <option value="custom">Custom</option>
+            <option value="2x2">2×2 in</option>
+            <option value="4x4">4×4 in</option>
+            <option value="6x6">6×6 in</option>
+            <option value="8x8">8×8 in</option>
+          </select>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="width">Width (in)</label>
+            <input id="width" type="number" min="1" step="0.1" value="2">
+          </div>
+          <div class="field">
+            <label for="height">Height (in)</label>
+            <input id="height" type="number" min="1" step="0.1" value="2">
+          </div>
+        </div>
+        <div class="field">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" type="number" min="1" step="1" value="10">
+        </div>
+        <div class="price-row">
+          <div class="price">
+            <span>Total</span>
+            <strong id="priceValue">$0.00</strong>
+          </div>
+          <button class="btn accent" id="orderOpen">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-head">
+      <h2>About Us</h2>
+      <p>We craft premium printed materials with attention to detail and modern finishes.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Precision</h3>
+        <p>State-of-the-art presses, calibrated color profiles, and strict quality checks.</p>
+      </div>
+      <div class="about-card">
+        <h3>Finishes</h3>
+        <p>Matte, glossy, spot UV, embossing, and foiling for an elevated look.</p>
+      </div>
+      <div class="about-card">
+        <h3>Speed</h3>
+        <p>Efficient workflows from design to delivery with transparent timelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="section-head">
+      <h2>Contact</h2>
+      <p>Reach out for custom requests or enterprise pricing.</p>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="grid-2">
+        <div class="field">
+          <label for="cName">Full Name</label>
+          <input id="cName" type="text" required>
+        </div>
+        <div class="field">
+          <label for="cEmail">Email</label>
+          <input id="cEmail" type="email" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="cMessage">Message</label>
+        <textarea id="cMessage" rows="4" required></textarea>
+      </div>
+      <button class="btn accent" type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Premium Print Press</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay"></div>
+
+  <div class="modal" id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+    <div class="modal-header">
+      <h3 id="signInTitle">Sign In</h3>
+      <button class="icon-btn" data-close="signInModal" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="signInForm">
+        <div class="field">
+          <label for="siEmail">Email</label>
+          <input id="siEmail" type="email" required>
+        </div>
+        <div class="field">
+          <label for="siPassword">Password</label>
+          <input id="siPassword" type="password" required>
+        </div>
+        <button class="btn accent" type="submit">Sign In</button>
+      </form>
+      <div class="form-status" id="signInStatus"></div>
+      <div class="modal-foot-note">
+        <span>New here?</span>
+        <button class="link-btn" id="toSignUp">Create an account</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="signUpModal" role="dialog" aria-modal="true" aria-labelledby="signUpTitle">
+    <div class="modal-header">
+      <h3 id="signUpTitle">Sign Up</h3>
+      <button class="icon-btn" data-close="signUpModal" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="signUpForm">
+        <div class="field">
+          <label for="suName">Full Name</label>
+          <input id="suName" type="text" required>
+        </div>
+        <div class="field">
+          <label for="suEmail">Email</label>
+          <input id="suEmail" type="email" required>
+        </div>
+        <div class="field">
+          <label for="suPassword">Password</label>
+          <input id="suPassword" type="password" required>
+        </div>
+        <button class="btn accent" type="submit">Create Account</button>
+      </form>
+      <div class="form-status" id="signUpStatus"></div>
+      <div class="modal-foot-note">
+        <span>Already have an account?</span>
+        <button class="link-btn" id="toSignIn">Sign in</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+    <div class="modal-header">
+      <h3 id="orderTitle">Place Order</h3>
+      <button class="icon-btn" data-close="orderModal" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="orderForm">
+        <div class="grid-2">
+          <div class="field">
+            <label for="oName">Full Name</label>
+            <input id="oName" type="text" required>
+          </div>
+          <div class="field">
+            <label for="oEmail">Email</label>
+            <input id="oEmail" type="email" required>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="oPhone">Phone</label>
+            <input id="oPhone" type="tel" required>
+          </div>
+          <div class="field">
+            <label for="oAddress">Address</label>
+            <input id="oAddress" type="text" required>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="oType">Type</label>
+            <input id="oType" type="text" readonly>
+          </div>
+          <div class="field">
+            <label for="oSize">Size</label>
+            <input id="oSize" type="text" readonly>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="oQuantity">Quantity</label>
+            <input id="oQuantity" type="number" min="1" step="1" required>
+          </div>
+          <div class="field">
+            <label for="oTotal">Total</label>
+            <input id="oTotal" type="text" readonly>
+          </div>
+        </div>
+        <button class="btn accent" type="submit">Confirm Order</button>
+      </form>
+      <div class="order-success" id="orderSuccess"></div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
